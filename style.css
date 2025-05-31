@@ -1,0 +1,78 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+}
+
+body{
+    background-color: black;
+    display: grid;
+    grid-template-rows: 150px 7fr 1fr;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    min-height: 100vh;
+}
+
+header{
+    grid-column: 1/2;
+    max-height: 150px;
+    padding-top: 30px;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-bottom: 2px solid #39FF14;
+}
+
+main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pesquisa{
+    min-width: 500px;
+    min-height: 200px;
+    border: 2px solid #39FF14;
+    border-radius: 15px;
+    box-shadow: 0 0 8px 4px #39FF14;
+    padding: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+form{
+    min-width: 100%;
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+.form-disciplinas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px
+}
+
+.form-datas{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+select{
+    background-color: black;
+    border: 1px solid;
+    border-radius: 10px;
+    padding: 7px;
+}
+
+footer{
+    grid-column: 1/2;
+    padding-top: 30px;
+    padding-left: 30px;
+
+}
