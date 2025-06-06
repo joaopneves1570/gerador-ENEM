@@ -11,21 +11,22 @@ async function buscarQuestoes(ano) {
       // Trata o Markdown: substitui quebras simples por duplas
       const contextoTratado = marked.parse((questao.context || '').replace(/\n/g, '\n\n'));
 
-      const blocoHTML = `
+      container.innerHTML += `
         <div class="questao">
-          <h3>${questao.title} (${questao.year})</h3>
-          <div>${contextoTratado}</div>
-          <p>${questao.alternativesIntroduction}</p>
-          <ul>
-            ${questao.alternatives.map(alt => `<li>${alt.letter}: ${alt.text}</li>`).join("")}
-          </ul>
-          <hr>
+            <h3>${questao.title} (${questao.year})</h3>
+            <div>
+                ${contextoTratado}
+            </div>
+            <p>
+                ${questao.alternativesIntroduction}
+            </p>
+            <ul>
+                ${questao.alternatives.map(alt => `<li>${alt.letter}: ${alt.text}</li>`).join("")}
+            </ul>
         </div>
       `;
-
-      container.insertAdjacentHTML('beforeend', blocoHTML);
     });
-  }
+}
 
 function selecao() {
     const ano = document.getElementById("anos").value;
