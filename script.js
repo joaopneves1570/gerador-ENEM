@@ -1,10 +1,38 @@
-async function pegarDados() {
-  const resposta = await fetch('https://api.enem.dev/v1/exams/2023/questions');
-  const dados = await resposta.json();
-  return dados;
-}
+async function buscarQuestoes(ano) {
+    const resposta = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions`);
+    const dados = await resposta.json();
+    const questoes = dados.questions;
 
-// Usa a variável quando a promessa resolver
-pegarDados().then(dados => {
-  console.log('Agora a variável tem os dados:', dados);
-});
+    const container = document.getElementById("container");
+    container.innerHTML = "";
+
+    questoes.forEach((questao) => {
+
+      // Trata o Markdown: substitui quebras simples por duplas
+      const contextoTratado = marked.parse((questao.context || '').replace(/\n/g, '\n\n'));
+
+      const blocoHTML = `
+        <div class="questao">
+          <h3>${questao.title} (${questao.year})</h3>
+          <div>${contextoTratado}</div>
+          <p>${questao.alternativesIntroduction}</p>
+          <ul>
+            ${questao.alternatives.map(alt => `<li>${alt.letter}: ${alt.text}</li>`).join("")}
+          </ul>
+          <hr>
+        </div>
+      `;
+
+      container.insertAdjacentHTML('beforeend', blocoHTML);
+    });
+  }
+
+function selecao() {
+    const ano = document.getElementById("anos").value;
+    const disciplina = document.getElementById("disciplinas").value;
+
+    console.log("Ano selecionado:", ano);
+    console.log("Disciplina selecionada:", disciplina);
+
+    buscarQuestoes(ano);
+}

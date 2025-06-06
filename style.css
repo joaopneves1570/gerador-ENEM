@@ -26,10 +26,11 @@ header{
     border-bottom: 2px solid #39FF14;
 }
 
-main{
+.layout-pesquisa{
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-top: 50px;
 }
 
 .pesquisa{
@@ -75,4 +76,27 @@ footer{
     padding-top: 30px;
     padding-left: 30px;
 
+}
+
+#busca{
+    background-color:  #39FF14;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 50px;
+}
+
+
+#list-quest{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 200px;
+    padding-right: 200px;
+    margin-top: 100px;
+}
+
+.questao{
+    border: #39FF14 solid;
+    padding: 30px;
+    margin-bottom: 30px;
 }
