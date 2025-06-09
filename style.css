@@ -1,102 +1,164 @@
-*{
+/* Removendo as margens e definindo uma fonte */
+* {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Corpo do site */
+body {
+    background-color: #121212;
+    color: white;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Cabeçalho */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: linear-gradient(90deg, #39FF14 0%, #00c896 100%);
+    color: black;
+}
+
+/* Seção apresentacao */
+.apresentacao {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 50px 20px;
+    gap: 40px;
+}
+
+.apresentacao img {
+    max-width: 500px;
+    width: 100%;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #39FF14;
+}
+
+.apresentacao-text {
+    max-width: 500px;
+    text-align: center;
+}
+
+/* Layout da barra de pesquisa */
+.layout-pesquisa {
+    display: flex;
+    justify-content: center;
+    padding: 30px 20px;
+}
+
+.pesquisa {
+    background-color: #1e1e1e;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 0 10px #39FF14;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Grid interno: selects lado a lado e botão */
+.pesquisa form#form-filtro {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 20px;
+    align-items: end;
+}
+
+.pesquisa .form-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.pesquisa select, 
+.pesquisa button {
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    font-size: 16px;
+}
+
+.pesquisa select {
+    background-color: #2c2c2c;
     color: white;
 }
 
-body{
-    background-color: black;
-    display: grid;
-    grid-template-rows: 150px 7fr 1fr;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    min-height: 100vh;
+.pesquisa button#busca {
+    background-color: #39FF14;
+    color: black;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
-header{
-    grid-column: 1/2;
-    max-height: 150px;
-    padding-top: 30px;
-    padding-left: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    border-bottom: 2px solid #39FF14;
+.pesquisa button#busca:hover {
+    background-color: #2ecb10;
 }
 
-.layout-pesquisa{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-top: 50px;
-}
-
-.pesquisa{
-    min-width: 500px;
-    min-height: 200px;
-    border: 2px solid #39FF14;
-    border-radius: 15px;
-    box-shadow: 0 0 8px 4px #39FF14;
+/* Container de questões */
+#questao-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background-color: #1e1e1e;
+    border-radius: 20px;
     padding: 30px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-evenly;
+    box-shadow: 0 0 10px #39FF14;
 }
 
-form{
-    min-width: 100%;
-    display: flex;
-    justify-content:space-around;
-    align-items: center;
+/* Questão e alternativas */
+.questao h3 {
+    margin-bottom: 10px;
 }
 
-.form-disciplinas{
-    display: flex;
-    flex-direction: column;
-    gap: 10px
+.questao ul {
+    list-style: none;
+    padding: 0;
 }
 
-.form-datas{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-select{
-    background-color: black;
-    border: 1px solid;
+.questao li {
+    background-color: #2c2c2c;
+    margin: 10px 0;
+    padding: 10px;
     border-radius: 10px;
-    padding: 7px;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
-footer{
-    grid-column: 1/2;
-    padding-top: 30px;
-    padding-left: 30px;
-
+.questao li:hover {
+    background-color: #c3d6bf;
+    color: black;
 }
 
-#busca{
-    background-color:  #39FF14;
-    padding-left: 50px;
-    padding-right: 50px;
-    border-radius: 50px;
+.questao li.correto {
+    background-color: #0eec0a;
+    color: black;
 }
 
-
-#list-quest{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-left: 200px;
-    padding-right: 200px;
-    margin-top: 100px;
+.questao li.errado {
+    background-color: #e74c3c;
+    color: white;
 }
 
-.questao{
-    border: #39FF14 solid;
+button#proxima {
+    margin-top: 20px;
+    background-color: #39FF14;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Footer */
+footer {
+    margin-top: auto;
+    text-align: center;
     padding: 30px;
-    margin-bottom: 30px;
+    font-size: 14px;
+    background-color: #121212;
+    color: #888;
 }

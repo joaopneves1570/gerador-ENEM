@@ -1,78 +1,69 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="style.css">
-        <title>Nome do Site</title>
-    </head>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Simulados ENEM</title>
+</head>
+<body>
 
-    <body>
-        
-        <header>
-            <h1>Nome do Site</h1>
-            <h6>subtitulo</h6>
-        </header>
+    <header>
+        <h1>Simulados ENEM</h1>
+        <p>Treine com questões reais e aumente suas chances no ENEM!</p>
+    </header>
 
-        <main>
-            <div class="layout-pesquisa">
-                <div class="pesquisa">
-                    <form action="" method="get">
-                        <div class="form-disciplinas">
-                            <label for="disciplina">Procure por uma disciplina</label>
-                            <select name="disciplina" id="disciplinas">
-                                <option value="">Selecione uma disciplina</option>
-                                <option value="Pt">Português</option>
-                                <option value="Lit">Literatura</option>
-                                <option value="Hist">História</option>
-                                <option value="Geo">Geografia</option>
-                                <option value="Fil">Filosofia</option>
-                                <option value="Socio">Sociologia</option>
-                                <option value="Ing">Inglês</option>
-                                <option value="Spn">Espanhol</option>
-                                <option value="Edfis">Educação Física</option>
-                                <option value="Art">Artes</option>
-                                <option value="Mat">Matemática</option>
-                                <option value="Fis">Física</option>
-                                <option value="Quim">Química</option>
-                                <option value="Bio">Biologia</option>
-                            </select>
-                        </div>
-                        <div class="form-datas">
-                            <label for="ano">Procure pelo ano</label>
-                            <select name="ano" id="anos">
-                                <option value="">Selecione um ano</option>
-                                <option value="2018">2018</option>
-                                <option value="2017">2017</option>
-                                <option value="2016">2016</option>
-                                <option value="2015">2015</option>
-                                <option value="2014">2014</option>
-                                <option value="2013">2013</option>
-                                <option value="2012">2012</option>
-                                <option value="2011">2011</option>
-                                <option value="2010">2010</option>
-                                <option value="2009">2009</option>
-                                <option value="2008">2008</option>
-                                <option value="2007">2007</option>
-                                <option value="2006">2006</option>
-                                <option value="2005">2005</option>
-                            </select>
-                        </div>
-                    </form>
-                    <button id="busca" onclick = "selecao()">Buscar</button>
+    <section class="apresentacao">
+        <img src="imgs/enem.png" alt="Estudante focado" />
+        <div class="apresentacao-text">
+            <h2>Estude com propósito</h2>
+            <p>
+                O ENEM é a porta de entrada para muitas universidades e programas voltados a educação como o Sisu, Prouni e FIES. 
+                Pensando nisso, nós, da equipe Simulados ENEM, desenvolvemos esse site pensando em você e seu futuro. 
+                Com +2700 questões do ENEM de diversos anos e disciplinas, o simulados ENEM o capacitará para realizar a prova nota mil!
+            </p>
+        </div>
+    </section>
+
+    <section class="layout-pesquisa">
+        <div class="pesquisa">
+            <form id="form-filtro">
+                <div class="form-item">
+                    <label for="disciplinas">Disciplina:</label>
+                    <select id="disciplinas" required>
+                        <option value="">Selecione</option>
+                        <option value="Pt">Português</option>
+                        <option value="Mat">Matemática</option>
+                        <option value="Hist">História</option>
+                        <option value="Geo">Geografia</option>
+                        <option value="Bio">Biologia</option>
+                        <option value="Quim">Química</option>
+                        <option value="Fis">Física</option>
+                    </select>
                 </div>
-            </div>
-            
-            <div id="list-quest">
-                <div id="container"></div>
-            </div>
-        </main>
+                <div class="form-item">
+                    <label for="anos">Ano:</label>
+                    <select id="anos" required>
+                        <option value="">Selecione</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019">2019</option>
+                        <option value="2018">2018</option>
+                    </select>
+                </div>
+                <button type="submit" id="busca">Buscar</button>
+            </form>
+        </div>
+    </section>
 
-        <footer>
-            <p>Rodapé</p>
-            <p>Não sei exatamente o que escrever aqui</p>
-        </footer>
-        <script src="script.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    </body>
+    <section id="questao-container"></section>
+
+    <footer>
+        <p>&copy; 2025 Simulados ENEM. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="script.js"></script>
+</body>
 </html>
