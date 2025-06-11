@@ -1,7 +1,10 @@
+
 document.getElementById('form-filtro').addEventListener('submit', async function (e) {
     e.preventDefault();
     const ano = document.getElementById("anos").value;
-    await carregarQuestoes(ano);
+    const materia = document.getElementById("disciplinas").value;
+    zerarPontuacao();
+    await carregarQuestoes(materia, ano);
 });
 
 let questoesFiltradas = [];
@@ -9,9 +12,12 @@ let indiceAtual = 0;
 
 // Está faltando filtrar por disciplinas :(
 
-async function carregarQuestoes(ano) {
+async function carregarQuestoes(materia, ano) {
+    var res;
+
     try {
-        const res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions`);
+        if (materia == "Inglês") res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=45&offset=1&language=ingles`);
+        else res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=45&offset=${(materia * 45) + 1}`);
         if (!res.ok) throw new Error('Erro na requisição');
         const dados = await res.json();
 
@@ -60,7 +66,7 @@ function mostrarQuestao(questao) {
                 .forEach(el => el.style.pointerEvents = "none");
 
             const sel = this.getAttribute("data-resposta");
-            const correto = questao.correct;
+            const correto = questao.correctAlternative;
             const feedbackEl = document.getElementById("feedback");
 
             // Precisa arrumar essa correção das alternativas
@@ -68,6 +74,7 @@ function mostrarQuestao(questao) {
             if (sel === correto) {
                 this.classList.add("correto");
                 feedbackEl.textContent = "✅ Você acertou!";
+                pontuar();
             } else {
                 this.classList.add("errado");
                 // destaca também a correta
@@ -92,3 +99,21 @@ function mostrarQuestao(questao) {
         }
     });
 }
+
+function carregarPontuacao() {
+  const pontos = localStorage.getItem("pontuacao");
+  return pontos ? parseInt(pontos) : 0;
+}
+
+function pontuar() {
+  const atual = carregarPontuacao();
+  const novo = atual + 1;
+  localStorage.setItem("pontuacao", novo);
+  console.log("Pontuação atual:", novo);
+}
+
+function zerarPontuacao(){
+    localStorage.setItem("pontuacao", 0);
+    console.log("Pontuação atual:", 0);
+}
+
