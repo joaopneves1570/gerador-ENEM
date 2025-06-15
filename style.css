@@ -24,6 +24,7 @@ header {
     color: black;
 }
 
+
 /* Seção apresentacao */
 .apresentacao {
     display: flex;
@@ -161,4 +162,9 @@ footer {
     font-size: 14px;
     background-color: #121212;
     color: #888;
+}
+
+.white {
+    background-color: white;
+    color: black;
 }

@@ -12,6 +12,14 @@ let indiceAtual = 0;
 
 // Está faltando filtrar por disciplinas :(
 
+//Gerar questões em ordem aleatória
+function getRandomInt(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min) + min);
+}
+
+
 async function carregarQuestoes(materia, ano) {
     var res;
 
@@ -28,7 +36,7 @@ async function carregarQuestoes(materia, ano) {
             return;
         }
 
-        indiceAtual = 0;
+        indiceAtual = getRandomInt(0, questoesFiltradas.length);
         mostrarQuestao(questoesFiltradas[indiceAtual]);
     } catch (err) {
         console.error(err);
@@ -81,17 +89,15 @@ function mostrarQuestao(questao) {
                 const liCorreta = document.querySelector(`li[data-resposta="${correto}"]`);
                 if (liCorreta) liCorreta.classList.add("correto");
 
-                // Encontra o texto da alternativa certa
-                const altCorretaObj = questao.alternatives.find(a => a.letter === correto);
-                const textoCorreta = altCorretaObj ? altCorretaObj.text : '';
-                feedbackEl.textContent = `❌ Errado! A resposta certa é ${correto}: ${textoCorreta}`;
+                
             }
         });
     });
 
     // Botão para a próxima questão 
     document.getElementById("proxima").addEventListener("click", function () {
-        indiceAtual++;
+        questoesFiltradas.splice(indiceAtual, 1);
+        indiceAtual = getRandomInt(0, questoesFiltradas.length);
         if (indiceAtual < questoesFiltradas.length) {
             mostrarQuestao(questoesFiltradas[indiceAtual]);
         } else {
