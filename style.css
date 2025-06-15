@@ -145,6 +145,19 @@ header {
     color: white;
 }
 
+.questao li img {
+    max-width: 100%;
+    display: block;
+    margin-top: 10px;
+}
+
+.questao img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
 button#proxima {
     margin-top: 20px;
     background-color: #39FF14;
@@ -153,6 +166,52 @@ button#proxima {
     border: none;
     cursor: pointer;
 }
+
+#questao-container.resultado-final {
+    background-color: #1e1e1e;
+    border: 2px solid #39FF14;
+    border-radius: 20px;
+    padding: 2rem;
+    max-width: 800px;
+    margin: 3rem auto;
+    text-align: center;
+    box-shadow: 0 0 15px #39FF14;
+    color: white;
+    animation: fadeIn 0.5s ease;
+}
+
+#questao-container.resultado-final h2 {
+    margin-bottom: 1rem;
+    color: #39FF14;
+    font-size: 1.8rem;
+}
+
+#questao-container.resultado-final p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #eee;
+}
+
+#questao-container.resultado-final strong {
+    color: #39FF14;
+}
+
+#questao-container.resultado-final button {
+    background-color: #39FF14;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+#questao-container.resultado-final button:hover {
+    background-color: #2ecb10;
+    transform: scale(1.05);
+}
+
 
 /* Footer */
 footer {
