@@ -8,6 +8,7 @@ document.getElementById('form-filtro').addEventListener('submit', async function
     filtroAtualMateria = materia;
 
     zerarPontuacao(); // Reseta a pontuação
+    zerarQuestao(); // Zera o número de questões
     await carregarQuestoes(materia, ano); // Carrega as questões com base nos filtros
 });
 
@@ -115,6 +116,7 @@ function mostrarQuestao(questao) {
     `;
 
     let respondeu = false;
+    contaQuestao();
 
     // Eventos de clique nas alternativas
     document.querySelectorAll(".questao li").forEach(li => {
@@ -165,10 +167,10 @@ function carregarPontuacao() {
 
 //  + 1 ponto por acerto
 function FazerPontos() {
-    const atual = carregarPontuacao();
-    const novo = atual + 1;
-    localStorage.setItem("pontuacao", novo);
-    console.log("Pontuação atual:", novo);
+    var atual = carregarPontuacao();
+    atual = atual + 1;
+    localStorage.setItem("pontuacao", atual);
+    console.log("Pontuação atual:", atual);
 }
 
 // Volta a pontuação para zero
@@ -177,10 +179,31 @@ function zerarPontuacao() {
     console.log("Pontuação atual:", 0);
 }
 
+// Retorna a quantidade de questões respondidas
+function quantidadeQuestoes() {
+    const pontos = localStorage.getItem("questao");
+    return pontos ? parseInt(pontos) : 0;
+}
+
+// Soma 1 no número de questões respondidas
+function contaQuestao(){
+    var questao = quantidadeQuestoes();
+    questao = questao + 1;
+    localStorage.setItem("questao", questao);
+    console.log("Número Questões:", questao);
+
+}
+
+// Volta o número de questões para zero
+function zerarQuestao() {
+    localStorage.setItem("questao", 0);
+    console.log("Número Questões:", 0);
+}
+
 // tela de resultado final, ao concluir o simulado
 function mostrarResultadoFinal() {
     const container = document.getElementById("questao-container");
-    const total = questoesFiltradas.length;
+    const total = quantidadeQuestoes();
     const acertos = carregarPontuacao();
 
     container.classList.add("resultado-final");
