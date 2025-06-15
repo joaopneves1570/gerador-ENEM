@@ -35,14 +35,24 @@ function getRandomInt(min, max) {
 async function carregarQuestoes(materia, ano) {
     let res;
 
+    // Até o ano de 2016 o formato da prova era diferente do que é hoje
+    var filtro;
+    if(materia == "linguagens") filtro = ano > 2016 ? 0 : 2;
+    if(materia == "humanas") filtro = ano > 2016 ? 1 : 0;
+    if(materia == "natureza") filtro = ano > 2016 ? 2 : 1;
+    if(materia == "matematica") filtro = 3;
+
+
     try {
         // No caso do inglês parece que tem um parâmetro diferente chamado "language"
         if (materia === "Inglês") {
-            res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=45&offset=1&language=ingles`);
+            if (ano > 2016) res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=44&offset=1&language=ingles`);
+            else res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=44&offset=91&language=ingles`);
         } else {
             // Analisa a posição da matéria
-            res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=45&offset=${(materia * 45) + 1}`);
+            res = await fetch(`https://api.enem.dev/v1/exams/${ano}/questions?limit=44&offset=${(filtro * 45) + 1}`);
         }
+
 
         // Verifica erros de requisicão com a API
         if (!res.ok) throw new Error('Erro na requisição');
