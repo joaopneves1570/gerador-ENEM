@@ -18,20 +18,7 @@ let indiceAtual = 0;
 let filtroAtualAno = null;
 let filtroAtualMateria = null;
 
-<<<<<<< HEAD
-// Está faltando filtrar por disciplinas :(
-
-//Gerar questões em ordem aleatória
-function getRandomInt(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min) + min);
-}
-
-
-=======
 // Função para buscar as questões na API
->>>>>>> 1b7e16e1280235dbc42c50f8cfe2c8c20b1bea7a
 async function carregarQuestoes(materia, ano) {
     let res;
 
@@ -69,12 +56,8 @@ async function carregarQuestoes(materia, ano) {
             return;
         }
 
-<<<<<<< HEAD
-        indiceAtual = getRandomInt(0, questoesFiltradas.length);
-=======
         // Reinicia o índice e mostra a primeira questão
         indiceAtual = 0;
->>>>>>> 1b7e16e1280235dbc42c50f8cfe2c8c20b1bea7a
         mostrarQuestao(questoesFiltradas[indiceAtual]);
 
     } catch (err) {
@@ -173,7 +156,6 @@ function mostrarQuestao(questao) {
 
     // Botao proxima questao
     document.getElementById("proxima").addEventListener("click", function () {
-        questoesFiltradas.splice(indiceAtual, 1);
         if (!respondeu) {
             return; // evita do usuario ir para proxima questao sem responder
         }
